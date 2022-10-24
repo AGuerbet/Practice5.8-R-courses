@@ -1,0 +1,40 @@
+---
+title: "Practice_5.1"
+author: "Arnaud Guerbet"
+date: "2022-10-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(leaflet)
+library(magrittr)
+```
+
+## Creation of the map
+
+Map defining the surf-spot of the north east of Taiwan and classifying them in function of their exposure to swell and wind. 
+
+```{r cars}
+#definition of the interactive map
+spot <- leaflet() %>% addTiles()
+
+#add marker point 
+spot <- addTiles(spot)
+spot<-addMarkers(spot, lng=121.649718, lat=25.223569, popup="Juishan")
+spot<-addMarkers(spot, lng=121.686555, lat=25.187826, popup="Guihou")
+spot<-addMarkers(spot, lng=121.944488, lat=25.021834, popup="Fulong")
+spot<-addMarkers(spot, lng=121.885991, lat=24.932716, popup="Dashi")
+spot<-addMarkers(spot, lng=121.853682, lat=24.891523, popup="Double Lions")
+spot<-addMarkers(spot, lng=121.8324, lat=24.855883, popup="Riverstone")
+spot<-addMarkers(spot, lng=121.819547, lat=24.453587, popup="Nan'Ao")
+```
+
+##Adding rectangles to group locations
+
+```{r pressure, echo=FALSE}
+spot<-addRectangles(spot,121.638364,25.234690, 121.954302, 25.013932, color = "red", fill = FALSE, dashArray = "5,5", weight = 3, label="North Taiwan, Wave: N/NO, Wind: S/E/SE")
+spot<-addRectangles(spot,121.768481,25.060948, 121.889242, 24.420634, color = "Yellow", fill = FALSE, dashArray = "5,5", weight = 3, label="East Taiwan, Wave: E/NE, Wind: O/E/SE")
+spot
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
